@@ -168,6 +168,10 @@ func RegisterClientCommonConfigFlags(cmd *cobra.Command, c *v1.ClientCommonConfi
 	}
 	cmd.PersistentFlags().StringVarP(&c.User, "user", "u", "", "user")
 	cmd.PersistentFlags().StringVarP(&c.Auth.Token, "token", "t", "", "auth token")
+    // BEGIN: add a global persistent --metadatas so visitor subcommands can receive metadata via CLI
+    // It complements (does not replace) proxy-level --metadatas.
+    // Usage: frpc stcp visitor ... --metadatas token=abc
+    cmd.PersistentFlags().StringToStringVarP(&c.Metadatas, "metadatas", "", nil, "metadata key-value pairs (e.g., key1=value1,key2=value2)")
 }
 
 type PortsRangeSliceFlag struct {
