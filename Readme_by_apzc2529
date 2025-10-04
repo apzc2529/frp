@@ -1,0 +1,8 @@
+#compile frps and frpc
+make frpc frps
+# Run frps locally
+./bin/frps --bind-port 7001
+# Run frpc stcp in remote machine.
+./bin/frpc stcp  -P 7001 -n secret_ssh -u user --metadatas token=abc --local-ip 127.0.0.1 -l 22 -s localhost
+# Run frpc stcp visitor in local machine
+./bin/frpc stcp visitor -n secret_ssh_visitor  --server-name secret_ssh   --bind-addr 127.0.0.1 --bind-port 6058   -s localhost -P 7001   -u user  --metadatas token=abc  --tls-enable
