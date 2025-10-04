@@ -106,7 +106,7 @@ func registerProxyBaseConfigFlags(cmd *cobra.Command, c *v1.ProxyBaseConfig, opt
 	}
 
 	cmd.Flags().StringVarP(&c.Name, "proxy_name", "n", "", "proxy name")
-	cmd.Flags().StringToStringVarP(&c.Metadatas, "metadatas", "", nil, "metadata key-value pairs (e.g., key1=value1,key2=value2)")
+	//cmd.Flags().StringToStringVarP(&c.Metadatas, "metadatas", "", nil, "metadata key-value pairs (e.g., key1=value1,key2=value2)")
 	cmd.Flags().StringToStringVarP(&c.Annotations, "annotations", "", nil, "annotation key-value pairs (e.g., key1=value1,key2=value2)")
 
 	if !options.sshMode {
